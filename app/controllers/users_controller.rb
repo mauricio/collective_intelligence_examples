@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @users = User.find( :all, :conditions => [ 'id != ?', @user.id ] )
+    @algorithms = CodeVader::RecommendationsService.available_algorithms
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }

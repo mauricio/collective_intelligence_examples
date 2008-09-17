@@ -5,13 +5,21 @@
 
 <% unless @users.blank? %>
 
-<h2>Compare it with</h2>
+  <h2>Compare it with</h2>
 
-<ul>
-  <% for user in @users %>
-    <li> <%= link_to user, compare_ratings_path( :users => "#{@user.id},#{user.id}" )%>  </li>
+  <% for algorithm in @algorithms %>
+
+    <h3> Using the <%= algorithm.to_s.humanize  %> algorithm </h3>
+
+    <ul>
+      <% for user in @users %>
+        <li> <%= link_to user, compare_ratings_path( :users => "#{@user.id},#{user.id}", :algorithm => algorithm )%>  </li>
+      <% end  %>
+    </ul>
+
   <% end  %>
-</ul>
+
+
 
 
 <% end %>

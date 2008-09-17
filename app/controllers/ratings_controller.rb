@@ -1,8 +1,9 @@
 class RatingsController < ApplicationController
 
   def compare
+    @algorithm = params[:algorithm] || :default
     @users = User.find( params[:users].split(',') )
-    @result = CodeVader::RecommendationsService.compare( @users.first, @users.last  )    
+    @result = CodeVader::RecommendationsService.compare( @users.first, @users.last, @algorithm )
   end
 
 
@@ -21,7 +22,6 @@ class RatingsController < ApplicationController
   # GET /ratings/1.xml
   def show
     @rating = Rating.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @rating }
