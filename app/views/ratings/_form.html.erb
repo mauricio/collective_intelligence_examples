@@ -1,0 +1,23 @@
+<% form_for(@rating) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.select :user_id, User.find( :all, :order => 'name asc' ).to_select_options %>
+  </p>
+  
+  <p>
+    Recommended movie<br />
+    <%= f.select :rated_id, Movie.find( :all, :order => 'title asc' ).to_select_options %>
+    <%= f.hidden_field :rated_type, :value => 'Movie' %>
+  </p>
+
+  <p>
+    <%= f.label :score %><br />
+    <%= f.text_field :score %>
+  </p>  
+
+  <p>
+    <%= f.submit "Send" %>
+  </p>
+<% end %>

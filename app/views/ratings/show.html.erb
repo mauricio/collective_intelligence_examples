@@ -1,0 +1,23 @@
+<p>
+  <b>User:</b>
+  <%=h @rating.user_id %>
+</p>
+
+<p>
+  <b>Score:</b>
+  <%=h @rating.score %>
+</p>
+
+<p>
+  <b>Recommended:</b>
+  <%=h @rating.recommended_id %>
+</p>
+
+<p>
+  <b>Recommended type:</b>
+  <%=h @rating.recommended_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_rating_path(@rating) %> |
+<%= link_to 'Back', ratings_path %>
