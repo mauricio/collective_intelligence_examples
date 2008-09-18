@@ -13,7 +13,7 @@
 
     <ul>
       <% for user in @users %>
-        <li> <%= link_to user, compare_ratings_path( :users => "#{@user.id},#{user.id}", :algorithm => algorithm )%>  </li>
+        <li> <%= link_to user, compare_user_ratings_path( :users => "#{@user.id},#{user.id}", :algorithm => algorithm )%>  </li>
       <% end  %>
     </ul>
 

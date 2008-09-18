@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
 
-  map.resources :ratings, :collection => { :compare => :get }
+  map.resources :ratings, :collection => { :compare_user => :get, :compare_item => :get }
   map.resources :movies
   map.resources :users
 

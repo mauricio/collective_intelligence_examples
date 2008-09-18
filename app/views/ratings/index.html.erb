@@ -1,5 +1,7 @@
 <h1>Listing ratings</h1>
 
+<%= will_paginate @ratings %>
+
 <table>
   <tr>
     <th>User</th>
@@ -21,5 +23,7 @@
 </table>
 
 <br />
+
+<%= will_paginate @ratings %>
 
 <%= link_to 'New rating', new_rating_path %>

@@ -1,16 +1,17 @@
 class RatingsController < ApplicationController
 
-  def compare
+  def compare_user
     @algorithm = params[:algorithm] || :default
     @users = User.find( params[:users].split(',') )
-    @result = CodeVader::RecommendationsService.compare( @users.first, @users.last, @algorithm )
+    @result = CodeVader::RecommendationsService.compare_users( @users.first, @users.last, @algorithm )
+    render :action => 'compare'
   end
 
 
   # GET /ratings
   # GET /ratings.xml
   def index
-    @ratings = Rating.find(:all, :include => [ :user, :rated ], :order => 'user_id, rated_id')
+    @ratings = paginate_model( Rating, :include => [ :user, :rated ] )
 
     respond_to do |format|
       format.html # index.html.erb

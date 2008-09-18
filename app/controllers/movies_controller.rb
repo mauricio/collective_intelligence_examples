@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.xml
   def index
-    @movies = Movie.find(:all, :order => 'title asc')
+    @movies = paginate_model( Movie )
 
     respond_to do |format|
       format.html # index.html.erb

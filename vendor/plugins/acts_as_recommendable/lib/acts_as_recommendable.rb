@@ -12,10 +12,14 @@ module CodeVader
         algorithms[ :default ] = block if default
       end
 
-      def compare( first_user, last_user, algorithm = :default )
-        first_user_ratings, last_user_ratings = Rating.find_common_ratings_for(first_user, last_user)
+      def compare_users( first_user, last_user, algorithm = :default )
+        first_user_ratings, last_user_ratings = Rating.find_common_ratings_for_users(first_user, last_user)
         return 0 if first_user_ratings.blank? or last_user_ratings.blank?
         algorithms[ algorithm.to_sym ].call( first_user_ratings, last_user_ratings )
+      end
+
+      def compare_items( first_item, last_item, algorithm = :default )
+      
       end
 
       def available_algorithms

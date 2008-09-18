@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20080917024900) do
 
   create_table "ratings", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "score",      :limit => 10, :precision => 10, :scale => 0
+    t.decimal  "score",      :precision => 2, :scale => 1
     t.integer  "rated_id"
     t.string   "rated_type"
     t.datetime "created_at"

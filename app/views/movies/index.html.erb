@@ -1,5 +1,7 @@
 <h1>Listing movies</h1>
 
+<%= will_paginate @movies %>
+
 <table>
   <tr>
     <th>Title</th>
@@ -13,6 +15,8 @@
   </tr>
 <% end %>
 </table>
+
+<%= will_paginate @movies %>
 
 <br />
 
