@@ -19,7 +19,9 @@ module CodeVader
       end
 
       def compare_items( first_item, last_item, algorithm = :default )
-      
+        first_item_ratings, last_item_ratings = Rating.find_common_ratings_for_items(first_item, last_item)
+        return 0 if first_user_ratings.blank? or last_user_ratings.blank?
+        algorithms[ algorithm.to_sym ].call( first_item_ratings, last_item_ratings )      
       end
 
       def available_algorithms
