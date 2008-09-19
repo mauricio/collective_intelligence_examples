@@ -1,0 +1,6 @@
+<h2> Movies comparission </h2>
+
+<p> Movies: <%= @movies.map { |u| link_to( u.to_s, u) }.join( ', ' )  %>  </p>
+
+<p> Compatibility value: <%= @result  %>  </p>
+<p>Percentage: <%= (@result * 100).to_i  %>&#37; </p>

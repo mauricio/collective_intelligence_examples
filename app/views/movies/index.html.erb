@@ -9,7 +9,7 @@
 
 <% for movie in @movies %>
   <tr>
-    <td><%=h movie.title %></td>
+    <td><%= link_to  movie, movie %></td>
     <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
     <td><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

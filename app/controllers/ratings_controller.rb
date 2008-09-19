@@ -7,6 +7,12 @@ class RatingsController < ApplicationController
     render :action => 'compare'
   end
 
+  def compare_item
+    @algorithm = params[:algorithm] || :default
+    @movies = Movie.find( params[:movies].split(',') )
+    @result = CodeVader::RecommendationsService.compare_items( @movies.first, @movies.last, @algorithm )
+    render :action => 'compare_movies'
+  end  
 
   # GET /ratings
   # GET /ratings.xml

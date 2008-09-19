@@ -1,4 +1,4 @@
-CodeVader::RecommendationsService.register :pearson_correlation do |first_user_ratings, last_user_ratings|
+CodeVader::RecommendationsService.register :pearson_correlation, true do |first_user_ratings, last_user_ratings|
 
   size = first_user_ratings.size
 

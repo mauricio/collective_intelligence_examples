@@ -3,6 +3,21 @@
   <%=h @movie.title %>
 </p>
 
+<h1>Compare this movie with other movies</h1>
+
+<% for algorithm in @algorithms %>
+
+  <h2>Using the <%= algorithm.to_s.humanize %> algorithm </h2>
+
+  <%= will_paginate @movies %>
+  <ul>
+    <% for movie in @movies %>
+      <li><%= link_to movie, compare_item_ratings_path( :movies => "#{@movie.id},#{movie.id}" , :algorithm => algorithm)  %> </li>
+    <% end  %>
+  </ul>
+  <%= will_paginate @movies %>
+
+<% end  %>
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>

@@ -14,7 +14,8 @@ class MoviesController < ApplicationController
   # GET /movies/1.xml
   def show
     @movie = Movie.find(params[:id])
-
+    @movies = paginate_model( Movie, :conditions => [ 'id != ?', @movie.id ] )
+    @algorithms = CodeVader::RecommendationsService.available_algorithms
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @movie }
