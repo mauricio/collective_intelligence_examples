@@ -1,4 +1,3 @@
-require 'rating'
-require 'acts_as_recommendable'
-require 'euclidean_distance'
-require 'pearson_correlation'
+[ 'acts_as_recommendable', 'rating', 'similarity', 'euclidean_distance', 'pearson_correlation'].each do |i|
+  require "#{File.dirname(__FILE__)}/lib/#{i}"
+end
