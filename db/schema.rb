@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080917024900) do
+ActiveRecord::Schema.define(:version => 20080919034506) do
 
   create_table "movies", :force => true do |t|
     t.string   "title"
@@ -18,17 +18,28 @@ ActiveRecord::Schema.define(:version => 20080917024900) do
   end
 
   create_table "ratings", :force => true do |t|
-    t.integer  "user_id"
-    t.decimal  "score",      :precision => 2, :scale => 1
-    t.integer  "rated_id"
-    t.string   "rated_type"
+    t.integer  "user_id",                                                :default => 0, :null => false
+    t.decimal  "score",                    :precision => 2, :scale => 1
+    t.integer  "rated_id",                                               :default => 0, :null => false
+    t.string   "rated_type", :limit => 10,                                              :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "ratings", ["user_id"], :name => "index_ratings_on_user_id"
-  add_index "ratings", ["rated_id"], :name => "index_ratings_on_rated_id"
-  add_index "ratings", ["rated_type"], :name => "index_ratings_on_rated_type"
+  add_index "ratings", ["rated_id", "user_id", "rated_type"], :name => "index_ratings_on_all"
+  add_index "ratings", ["rated_id", "rated_type"], :name => "index_ratings_on_rated"
+
+  create_table "similarities", :force => true do |t|
+    t.decimal "similarity_value", :precision => 10, :scale => 8
+    t.boolean "mirror",                                          :default => false
+    t.integer "first_item_id",                                                      :null => false
+    t.string  "first_item_type",                                                    :null => false
+    t.integer "last_item_id",                                                       :null => false
+    t.string  "last_item_type",                                                     :null => false
+  end
+
+  add_index "similarities", ["first_item_id", "first_item_type", "last_item_id", "last_item_type"], :name => "index_similarities_on_all_items"
 
   create_table "users", :force => true do |t|
     t.string   "name"

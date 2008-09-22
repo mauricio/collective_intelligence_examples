@@ -8,6 +8,8 @@ class Rating < ActiveRecord::Base
   belongs_to :user
   belongs_to :rated, :polymorphic => true
 
+  named_scope :since, lambda { |since, item_type| { :conditions => [ 'created_at > ? and rated_type = ?', since, item_type ] } }
+  
   def to_s
     score
   end
@@ -20,12 +22,20 @@ class Rating < ActiveRecord::Base
       return first_user_ratings, last_user_ratings
     end
 
-    def find_common_ratings_for_items( first_item, last_item, rated_type = 'Movie' )
-      first_item_ratings = find_by_sql( [ FOR_ITEMS_WITH_SUBSELECT, first_item.id, rated_type, last_item.id, rated_type  ]  )
-      last_item_ratings = find( :all, :order => 'user_id', :conditions => [ 'rated_id = ? and rated_type = ? and user_id in ( ? )', last_item.id, rated_type, first_item_ratings.map(&:user_id) ] )
-      return first_item_ratings, last_item_ratings
+    def find_common_ratings_for_items( first_item, last_item)
+      return find_common_ratings_for_items_ids( first_item.id, last_item.id, first_item.class.name )
     end
-    
+
+    def find_common_ratings_for_item_ids( first_item_id, last_item_id, item_type )
+      first_item_ratings = find_by_sql( [ FOR_ITEMS_WITH_SUBSELECT, first_item_id, item_type, last_item_id, item_type  ]  )
+      last_item_ratings = find( :all, :order => 'user_id', :conditions => [ 'rated_id = ? and rated_type = ? and user_id in ( ? )', last_item_id, item_type, first_item_ratings.map(&:user_id) ] )
+      return first_item_ratings, last_item_ratings      
+    end
+
+    def find_items_to_update( user_ids, rated_ids, rated_type )
+      connection.select_values( sanitize_sql( [ 'select r.rated_id from ratings r where r.user_id in ( ? ) and rated_id not in ( ? ) and rated_type = ?', user_ids, rated_ids, rated_type ] ) )
+    end
+
   end
   
   FOR_ITEMS_WITH_SUBSELECT = %q{ SELECT r.* 

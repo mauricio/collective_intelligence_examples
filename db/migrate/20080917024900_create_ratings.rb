@@ -10,8 +10,8 @@ class CreateRatings < ActiveRecord::Migration
     end
     
     add_index :ratings, :user_id
-    add_index :ratings, :rated_id
-    add_index :ratings, :rated_type
+    add_index :ratings, [:rated_id, :rated_type]
+    add_index :ratings, [:user_id, :rated_id, :rated_type], :name => 'index_ratings_on_all'
     
   end
 

@@ -50,4 +50,23 @@ namespace :dataset do
   desc 'Load the whole movielens dataset'
   task :load_database => [:untar_database, :load_users, :load_movies, :load_ratings]
 
+  desc 'Calculate similarities for all using skynet'
+  task :load_similarities_for_movies_with_skynet => :environment do
+
+    movie_id = ENV['START'] || 0
+    end_movie_id = ENV['end'] || 2000
+    puts "Starting with -> #{movie_id}"
+
+    Movie.paginated_each( :page => 1, :per_page => 20, :conditions => [ 'id >= ? and id <= ?', movie_id, end_movie_id ], :order => 'id asc' ) do |m|
+      puts "Comparing movie -> #{m.id}"
+      Movie.paginated_each( :page => 1, :per_page => 200, :conditions => [ 'id != ?', m.id ], :order => 'id asc' ) do |movie|
+        if !Similarity.find_similarity_for(m, movie)
+          puts "Comparing movie -> #{m.id} - #{movie.id}"
+          m.send_later( :create_similarity, movie )
+        end
+      end
+    end
+  end
+
+
 end
