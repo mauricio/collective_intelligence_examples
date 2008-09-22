@@ -33,7 +33,7 @@ class Rating < ActiveRecord::Base
     end
 
     def find_items_to_update( user_ids, rated_ids, rated_type )
-      connection.select_values( sanitize_sql( [ 'select r.rated_id from ratings r where r.user_id in ( ? ) and rated_id not in ( ? ) and rated_type = ?', user_ids, rated_ids, rated_type ] ) )
+      connection.select_values( sanitize_sql( [ 'select r.rated_id from ratings r where r.user_id in ( ? ) and rated_id not in ( ? ) and rated_type = ? order by r.rated_id', user_ids, rated_ids, rated_type ] ) )
     end
 
   end

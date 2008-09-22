@@ -27,14 +27,34 @@ class Similarity < ActiveRecord::Base
     end
 
     def find_or_initialize_similarity_for_ids( first_item_id, last_item_id, item_type )
-      find_similarity_for(first_item_id, last_item_id) || Similarity.new( :first_item_id => first_item_id, :first_item_type => item_type, :last_item_id => last_item_id, :last_item_type => item_type )
+      find_similarity_for_ids(first_item_id, last_item_id, item_type) || Similarity.new( :first_item_id => first_item_id, :first_item_type => item_type, :last_item_id => last_item_id, :last_item_type => item_type )
     end    
 
     def find_or_create_similarity_for_ids( first_item_id, last_item_id, similarity_value, item_type )
-      similarity = find_or_initialize_similarity_for( first_item_id, last_item_id, item_type )
+      similarity = find_or_initialize_similarity_for_ids( first_item_id, last_item_id, item_type )
       similarity.similarity_value = similarity_value
       similarity.save
       similarity      
+    end
+
+    def update_similarities_since( rated_type, since, algorithm = :default )
+      updated_items = Rating.since( since, rated_type ).find(:all)
+      user_ids = updated_items.map(&:user_id)
+      user_ids.uniq!
+      rated_ids = updated_items.map(&:rated_id)
+      rated_ids.uniq!
+      rated_ids.sort!
+      items_to_update = Rating.find_items_to_update(user_ids, rated_ids, rated_type)
+
+      puts "User ids => #{user_ids} - Rated ids => #{rated_ids}"
+
+      rated_ids.each do |first_item_id|
+        items_to_update.each do |last_item_id|
+          puts "Updating similarities for #{first_item_id} => #{last_item_id}"
+          similarity_value = CodeVader::RecommendationsService.compare_items_by_ids( first_item_id, last_item_id, rated_type, algorithm )
+          Similarity.find_or_create_similarity_for_ids(first_item_id, last_item_id, similarity_value , rated_type)
+        end
+      end
     end
 
 
@@ -44,14 +64,14 @@ class Similarity < ActiveRecord::Base
 
   def create_mirror
     unless self.mirror?
-      Similarity.create( :first_item => self.last_item, :last_item => self.first_item, :similarity_value => self.similarity_value, :mirror => true )
+      Similarity.create( :first_item_id => self.last_item_id, :first_item_type => self.last_item_type, :last_item_id => self.first_item_id, :last_item_type => self.first_item_type, :similarity_value => self.similarity_value, :mirror => true )
     end
   end
 
   def update_mirror
     unless self.mirror?
       sim = Similarity.find( :first, :conditions => { :first_item_id => self.last_item_id, :first_item_type => self.last_item_type, :mirror => true, :last_item_id => self.first_item_id, :last_item_type => self.first_item_type } )
-      sim.similarity_vale = self.similarity_value
+      sim.similarity_value = self.similarity_value
       sim.save
     end
   end
