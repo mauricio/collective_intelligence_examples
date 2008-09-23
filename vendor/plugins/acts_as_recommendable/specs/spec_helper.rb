@@ -3,11 +3,16 @@ ENV['RAILS_ENV'] ||= 'test'
 require 'rubygems'
 require 'sqlite3'
 require 'activerecord'
+require 'active_record/fixtures'  
+require 'yaml'  
+require 'erb'  
 
 require 'spec'
 
 require File.dirname(__FILE__) + '/../init'
-require File.dirname(__FILE__) + '/migration'
+[ 'sample_movie', 'migration' ].each do |i|
+  require "#{File.dirname(__FILE__)}/#{i}"
+end
 tmp_dir = File.dirname(__FILE__) + '/../temp'
 
 ActiveRecord::Base.logger = Logger.new(  tmp_dir  + '/acts_as_recommended_spec.log', 'daily' )
@@ -21,3 +26,16 @@ ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :database => MY_D
 
 SpecDatabaseSetup.down
 SpecDatabaseSetup.up
+
+
+def clean_database
+  [ Rating, Similarity, SampleMovie ].each do |m|
+    m.delete_all
+  end
+end
+
+def setup_fixtures( files = [ 'ratings', 'sample_movies', 'similarities' ] )
+  files.each do |f|
+    Fixtures.create_fixtures( File.dirname(__FILE__) + '/../fixtures' , File.basename( f , '.*'))
+  end
+end

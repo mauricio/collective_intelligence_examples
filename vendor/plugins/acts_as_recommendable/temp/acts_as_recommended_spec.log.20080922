@@ -1,0 +1,960 @@
+  [4;36;1mSQL (0.000473)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000129)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.000138)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.006663)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001844)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.002018)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001926)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.002121)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001981)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.002097)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.000681)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.004027)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000158)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.002002)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000218)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001884)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001724)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001790)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001836)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001956)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001902)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.001962)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.000707)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.007096)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000165)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001875)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000219)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001829)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001786)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.005573)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001993)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001915)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.002172)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.002784)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.000682)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.007503)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000154)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001757)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000125)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001625)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001766)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001693)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001689)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001729)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.002612)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.001816)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.000686)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.002653)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000293)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.002018)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000183)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.002042)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001820)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001856)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001826)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001985)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.004036)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.002001)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.000700)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.005789)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000161)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001799)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000119)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001755)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001655)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001648)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001690)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001688)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.002730)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.001872)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.000662)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.003802)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000269)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.002735)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000193)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001877)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001769)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001727)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001774)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001972)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.002105)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.003967)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.001007)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.008057)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000242)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001894)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000145)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000168)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.001863)[0m   [0;1mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.001835)[0m   [0mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;36;1mSQL (0.001715)[0m   [0;1mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001779)[0m   [0mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001849)[0m   [0;1mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.001872)[0m   [0mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;36;1mSQL (0.001899)[0m   [0;1mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;35;1mSQL (0.002111)[0m   [0mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mRating Delete all (0.000232)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000143)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000134)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000730)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.009016)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000300)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001890)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000215)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001706)[0m   [0mDROP TABLE "sample_movies"[0m
+  [4;36;1mSQL (0.000168)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001882)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001708)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001813)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001738)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.003901)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.002551)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.002434)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.002220)[0m   [0;1mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.000163)[0m   [0mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id IS NULL AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;36;1mRating Delete all (0.000187)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000146)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000137)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mSQL (0.000110)[0m   [0mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;36;1mRating Delete all (0.000152)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000149)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000136)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000719)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.002343)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000180)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.002261)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000257)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.002041)[0m   [0mDROP TABLE "sample_movies"[0m
+  [4;36;1mSQL (0.000122)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001874)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001730)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001797)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001781)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001757)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.002506)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.001935)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.001999)[0m   [0;1mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.000175)[0m   [0mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type IS NULL) [0m
+  [4;36;1mRating Delete all (0.000218)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000172)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000149)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mSQL (0.000128)[0m   [0mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;36;1mRating Delete all (0.000167)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000146)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000134)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mSQL (0.000108)[0m   [0mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id IS NULL AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;36;1mRating Delete all (0.000147)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000141)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000134)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mSQL (0.000106)[0m   [0mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;36;1mRating Delete all (0.000150)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000139)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000135)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000710)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.014028)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000179)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001713)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000142)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001594)[0m   [0mDROP TABLE "sample_movies"[0m
+  [4;36;1mSQL (0.000122)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001687)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001628)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001656)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001630)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.002321)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.002349)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.001874)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.001862)[0m   [0;1mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mRating Delete all (0.000244)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000144)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000133)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000152)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type IS NULL) [0m
+  [4;35;1mRating Delete all (0.000166)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000146)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000138)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000118)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000152)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000142)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000135)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000103)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id IS NULL AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000145)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000140)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000133)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000107)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000146)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000141)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000134)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000771)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.005350)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000180)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001674)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000141)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001589)[0m   [0mDROP TABLE "sample_movies"[0m
+  [4;36;1mSQL (0.000118)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001644)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001685)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001669)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001650)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001697)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001795)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.001838)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.001865)[0m   [0;1mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mRating Load (0.000784)[0m   [0m SELECT r.* 
+ FROM ratings r 
+ WHERE r.rated_id = 1 AND r.rated_type = 'SampleMovie' AND r.user_id IN 
+ ( SELECT ra.user_id FROM ratings ra WHERE ra.rated_id = 2 AND ra.rated_type = 'SampleMovie' )
+ ORDER BY r.user_id [0m
+  [4;36;1mRating Load (0.000700)[0m   [0;1mSELECT * FROM "ratings" WHERE (rated_id = 2 and rated_type = 'SampleMovie' and user_id in ( 1,2,3,4 )) ORDER BY user_id[0m
+  [4;35;1mRating Delete all (0.002115)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000145)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000136)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000126)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type IS NULL) [0m
+  [4;35;1mRating Delete all (0.000160)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000142)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000135)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000109)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000149)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000140)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000134)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000104)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id IS NULL AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000148)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000141)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000134)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000105)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000144)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000141)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000136)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000731)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.004063)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000176)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001815)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000142)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001817)[0m   [0mDROP TABLE "sample_movies"[0m
+  [4;36;1mSQL (0.000121)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001650)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001623)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001672)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001603)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001745)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001842)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.001948)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.001864)[0m   [0;1mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.000613)[0m   [0mselect r.rated_id from ratings r where r.user_id in ( 1,2 ) and rated_id not in ( 1,2 ) and rated_type = 'SampleMovie' order by r.rated_id[0m
+  [4;36;1mRating Delete all (0.002320)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000145)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000140)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mRating Load (0.000246)[0m   [0m SELECT r.* 
+ FROM ratings r 
+ WHERE r.rated_id = 1 AND r.rated_type = 'SampleMovie' AND r.user_id IN 
+ ( SELECT ra.user_id FROM ratings ra WHERE ra.rated_id = 2 AND ra.rated_type = 'SampleMovie' )
+ ORDER BY r.user_id [0m
+  [4;36;1mRating Load (0.000181)[0m   [0;1mSELECT * FROM "ratings" WHERE (rated_id = 2 and rated_type = 'SampleMovie' and user_id in ( NULL )) ORDER BY user_id[0m
+  [4;35;1mRating Delete all (0.000153)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000144)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000136)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000145)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type IS NULL) [0m
+  [4;35;1mRating Delete all (0.000163)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000143)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000136)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000111)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000158)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000143)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000136)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000107)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id IS NULL AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000149)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000142)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000134)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000114)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000153)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000142)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000134)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000717)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.004720)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000310)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001917)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000215)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001677)[0m   [0mDROP TABLE "sample_movies"[0m
+  [4;36;1mSQL (0.000180)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001803)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001725)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001966)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001732)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001902)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001912)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.002005)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.002012)[0m   [0;1mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.000769)[0m   [0mselect r.rated_id from ratings r where r.user_id in ( 1,2 ) and rated_id not in ( 1,2 ) and rated_type = 'SampleMovie' order by r.rated_id[0m
+  [4;36;1mRating Delete all (0.002816)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000171)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000139)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mRating Load (0.000273)[0m   [0m SELECT r.* 
+ FROM ratings r 
+ WHERE r.rated_id = 1 AND r.rated_type = 'SampleMovie' AND r.user_id IN 
+ ( SELECT ra.user_id FROM ratings ra WHERE ra.rated_id = 2 AND ra.rated_type = 'SampleMovie' )
+ ORDER BY r.user_id [0m
+  [4;36;1mRating Load (0.000184)[0m   [0;1mSELECT * FROM "ratings" WHERE (rated_id = 2 and rated_type = 'SampleMovie' and user_id in ( NULL )) ORDER BY user_id[0m
+  [4;35;1mRating Delete all (0.000156)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000145)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000136)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000132)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type IS NULL) [0m
+  [4;35;1mRating Delete all (0.000190)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000155)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000150)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000167)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000176)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000148)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000142)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000242)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id IS NULL AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000240)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000156)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000143)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000201)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000194)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000149)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000138)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000713)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.003693)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000210)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001885)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000147)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001927)[0m   [0mDROP TABLE "sample_movies"[0m
+  [4;36;1mSQL (0.000134)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001657)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001658)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001657)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001660)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001719)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001877)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.001969)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.001883)[0m   [0;1mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.000433)[0m   [0mselect r.rated_id from ratings r where r.user_id in ( 1,2 ) and rated_id not in ( 1,2 ) and rated_type = 'SampleMovie' order by r.rated_id[0m
+  [4;36;1mRating Delete all (0.006372)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000306)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000181)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mRating Load (0.000336)[0m   [0m SELECT r.* 
+ FROM ratings r 
+ WHERE r.rated_id = 1 AND r.rated_type = 'SampleMovie' AND r.user_id IN 
+ ( SELECT ra.user_id FROM ratings ra WHERE ra.rated_id = 2 AND ra.rated_type = 'SampleMovie' )
+ ORDER BY r.user_id [0m
+  [4;36;1mRating Load (0.000203)[0m   [0;1mSELECT * FROM "ratings" WHERE (rated_id = 2 and rated_type = 'SampleMovie' and user_id in ( NULL )) ORDER BY user_id[0m
+  [4;35;1mRating Delete all (0.000164)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000144)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000135)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000151)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type IS NULL) [0m
+  [4;35;1mRating Delete all (0.000162)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000142)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000134)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000139)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000165)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000149)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000138)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000173)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id IS NULL AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000300)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000177)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000155)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000153)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000171)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000149)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000136)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000725)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.002965)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000180)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001774)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000146)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001607)[0m   [0mDROP TABLE "sample_movies"[0m
+  [4;36;1mSQL (0.000116)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001677)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001627)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001656)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001622)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001766)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001806)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.001682)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.002285)[0m   [0;1mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.000447)[0m   [0mselect r.rated_id from ratings r where r.user_id in ( 1,2 ) and rated_id not in ( 1,2 ) and rated_type = 'SampleMovie' order by r.rated_id[0m
+  [4;36;1mRating Delete all (0.002380)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000160)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000136)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mRating Load (0.000351)[0m   [0m SELECT r.* 
+ FROM ratings r 
+ WHERE r.rated_id = 1 AND r.rated_type = 'SampleMovie' AND r.user_id IN 
+ ( SELECT ra.user_id FROM ratings ra WHERE ra.rated_id = 2 AND ra.rated_type = 'SampleMovie' )
+ ORDER BY r.user_id [0m
+  [4;36;1mRating Load (0.000190)[0m   [0;1mSELECT * FROM "ratings" WHERE (rated_id = 2 and rated_type = 'SampleMovie' and user_id in ( NULL )) ORDER BY user_id[0m
+  [4;35;1mRating Delete all (0.000169)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000144)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000138)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000144)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type IS NULL) [0m
+  [4;35;1mRating Delete all (0.000169)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000146)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000141)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000192)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000161)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000144)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000135)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000107)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id IS NULL AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000147)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000146)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000135)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000107)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000151)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000142)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000135)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000711)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.006428)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000310)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001952)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000210)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001671)[0m   [0mDROP TABLE "sample_movies"[0m
+  [4;36;1mSQL (0.000186)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.004037)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.002245)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001846)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001872)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.002146)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.002008)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.001904)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.002250)[0m   [0;1mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.000458)[0m   [0mselect r.rated_id from ratings r where r.user_id in ( 1,2 ) and rated_id not in ( 1,2 ) and rated_type = 'SampleMovie' order by r.rated_id[0m
+  [4;36;1mRating Delete all (0.002469)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000206)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000138)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mRating Delete all (0.000268)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000146)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000135)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000163)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type IS NULL) [0m
+  [4;35;1mRating Delete all (0.000185)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000157)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000139)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000198)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000220)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000191)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000153)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000157)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id IS NULL AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000163)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000143)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000136)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000223)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000208)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000238)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000160)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000717)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.007983)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000180)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001918)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000274)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.002279)[0m   [0mDROP TABLE "sample_movies"[0m
+  [4;36;1mSQL (0.000196)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001947)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001805)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001832)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001726)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.002260)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.002018)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.001999)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.002041)[0m   [0;1mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.000446)[0m   [0mselect r.rated_id from ratings r where r.user_id in ( 1,2 ) and rated_id not in ( 1,2 ) and rated_type = 'SampleMovie' order by r.rated_id[0m
+  [4;36;1mRating Delete all (0.001906)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000145)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000145)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mRating Load (0.000133)[0m   [0mSELECT * FROM "ratings" [0m
+  [4;36;1mRating Delete all (0.000167)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000146)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000137)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mSQL (0.000132)[0m   [0mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type IS NULL) [0m
+  [4;36;1mRating Delete all (0.000167)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000146)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000137)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mSQL (0.000114)[0m   [0mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;36;1mRating Delete all (0.000154)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000144)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000138)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mSQL (0.000104)[0m   [0mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id IS NULL AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;36;1mRating Delete all (0.000150)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000144)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000136)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mSQL (0.000105)[0m   [0mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;36;1mRating Delete all (0.000149)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000148)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000137)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000707)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.004830)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000184)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001991)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000146)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001630)[0m   [0mDROP TABLE "sample_movies"[0m
+  [4;36;1mSQL (0.000118)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001713)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001637)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.003476)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001735)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001763)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001879)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.001891)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.003194)[0m   [0;1mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.000436)[0m   [0mselect r.rated_id from ratings r where r.user_id in ( 1,2 ) and rated_id not in ( 1,2 ) and rated_type = 'SampleMovie' order by r.rated_id[0m
+  [4;36;1mRating Delete all (0.002000)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000222)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000152)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mRating Load (0.000425)[0m   [0m SELECT r.* 
+ FROM ratings r 
+ WHERE r.rated_id = 1 AND r.rated_type = 'SampleMovie' AND r.user_id IN 
+ ( SELECT ra.user_id FROM ratings ra WHERE ra.rated_id = 2 AND ra.rated_type = 'SampleMovie' )
+ ORDER BY r.user_id [0m
+  [4;36;1mRating Load (0.000319)[0m   [0;1mSELECT * FROM "ratings" WHERE (rated_id = 2 and rated_type = 'SampleMovie' and user_id in ( NULL )) ORDER BY user_id[0m
+  [4;35;1mRating Delete all (0.000186)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000146)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000139)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000242)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type IS NULL) [0m
+  [4;35;1mRating Delete all (0.000282)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000164)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000142)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000161)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000164)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000144)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000136)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000139)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id IS NULL AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000179)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000156)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000259)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000121)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000155)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000142)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000138)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000708)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.005291)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000174)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001751)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000141)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001775)[0m   [0mDROP TABLE "sample_movies"[0m
+  [4;36;1mSQL (0.000211)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001854)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001700)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001753)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001685)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.003392)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.002980)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.002503)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.002750)[0m   [0;1mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.000523)[0m   [0mselect r.rated_id from ratings r where r.user_id in ( 1,2 ) and rated_id not in ( 1,2 ) and rated_type = 'SampleMovie' order by r.rated_id[0m
+  [4;36;1mRating Load (0.000985)[0m   [0;1m SELECT r.* 
+ FROM ratings r 
+ WHERE r.rated_id = 1 AND r.rated_type = 'SampleMovie' AND r.user_id IN 
+ ( SELECT ra.user_id FROM ratings ra WHERE ra.rated_id = 2 AND ra.rated_type = 'SampleMovie' )
+ ORDER BY r.user_id [0m
+  [4;35;1mRating Load (0.000981)[0m   [0mSELECT * FROM "ratings" WHERE (rated_id = 2 and rated_type = 'SampleMovie' and user_id in ( 1,2,3,4 )) ORDER BY user_id[0m
+  [4;36;1mRating Delete all (0.001847)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000164)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000294)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mSQL (0.000157)[0m   [0mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type IS NULL) [0m
+  [4;36;1mRating Delete all (0.000205)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000155)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000145)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mSQL (0.000144)[0m   [0mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;36;1mRating Delete all (0.000172)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000153)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000141)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mSQL (0.000189)[0m   [0mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id IS NULL AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;36;1mRating Delete all (0.000181)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000145)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000157)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;35;1mSQL (0.000150)[0m   [0mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;36;1mRating Delete all (0.000167)[0m   [0;1mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;35;1mSimilarity Delete all (0.000149)[0m   [0mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;36;1mSampleMovie Delete all (0.000139)[0m   [0;1mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000705)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.005358)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000300)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001917)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000212)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001818)[0m   [0mDROP TABLE "sample_movies"[0m
+  [4;36;1mSQL (0.000171)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001896)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001766)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001776)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001934)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001889)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001982)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.002526)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.002001)[0m   [0;1mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.000427)[0m   [0mselect r.rated_id from ratings r where r.user_id in ( 1,2 ) and rated_id not in ( 1,2 ) and rated_type = 'SampleMovie' order by r.rated_id[0m
+  [4;36;1mRating Load (0.000790)[0m   [0;1m SELECT r.* 
+ FROM ratings r 
+ WHERE r.rated_id = 1 AND r.rated_type = 'SampleMovie' AND r.user_id IN 
+ ( SELECT ra.user_id FROM ratings ra WHERE ra.rated_id = 2 AND ra.rated_type = 'SampleMovie' )
+ ORDER BY r.user_id [0m
+  [4;35;1mRating Load (0.000686)[0m   [0mSELECT * FROM "ratings" WHERE (rated_id = 2 and rated_type = 'SampleMovie' and user_id in ( 1,2,3,4 )) ORDER BY user_id[0m
+  [4;36;1mSQL (0.000125)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type IS NULL) [0m
+  [4;35;1mRating Delete all (0.002068)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000144)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000136)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000122)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000154)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000142)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000134)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000108)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id IS NULL AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000147)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000140)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000134)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000104)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000144)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000140)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000135)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000714)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.004207)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000174)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001833)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000143)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001635)[0m   [0mDROP TABLE "sample_movies"[0m
+  [4;36;1mSQL (0.000116)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001643)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001630)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001678)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001652)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001726)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001849)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.001891)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.001845)[0m   [0;1mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.000434)[0m   [0mselect r.rated_id from ratings r where r.user_id in ( 1,2 ) and rated_id not in ( 1,2 ) and rated_type = 'SampleMovie' order by r.rated_id[0m
+  [4;36;1mRating Load (0.000753)[0m   [0;1m SELECT r.* 
+ FROM ratings r 
+ WHERE r.rated_id = 1 AND r.rated_type = 'SampleMovie' AND r.user_id IN 
+ ( SELECT ra.user_id FROM ratings ra WHERE ra.rated_id = 2 AND ra.rated_type = 'SampleMovie' )
+ ORDER BY r.user_id [0m
+  [4;35;1mRating Load (0.000704)[0m   [0mSELECT * FROM "ratings" WHERE (rated_id = 2 and rated_type = 'SampleMovie' and user_id in ( 1,2,3,4 )) ORDER BY user_id[0m
+  [4;36;1mSQL (0.000126)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type IS NULL) [0m
+  [4;35;1mRating Delete all (0.002392)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000154)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000152)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000118)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000151)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000142)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000134)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000103)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id IS NULL AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000150)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000144)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000136)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000105)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000146)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000140)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000135)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000704)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.005714)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000176)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001900)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000255)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001717)[0m   [0mDROP TABLE "sample_movies"[0m
+  [4;36;1mSQL (0.000177)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001776)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001683)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001757)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001724)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.002502)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.002103)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.007086)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.003056)[0m   [0;1mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.000473)[0m   [0mselect r.rated_id from ratings r where r.user_id in ( 1,2 ) and rated_id not in ( 1,2 ) and rated_type = 'SampleMovie' order by r.rated_id[0m
+  [4;36;1mRating Load (0.000761)[0m   [0;1m SELECT r.* 
+ FROM ratings r 
+ WHERE r.rated_id = 1 AND r.rated_type = 'SampleMovie' AND r.user_id IN 
+ ( SELECT ra.user_id FROM ratings ra WHERE ra.rated_id = 2 AND ra.rated_type = 'SampleMovie' )
+ ORDER BY r.user_id [0m
+  [4;35;1mRating Load (0.000691)[0m   [0mSELECT * FROM "ratings" WHERE (rated_id = 2 and rated_type = 'SampleMovie' and user_id in ( 1,2,3,4 )) ORDER BY user_id[0m
+  [4;36;1mSQL (0.000127)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type IS NULL) [0m
+  [4;35;1mRating Delete all (0.001997)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000146)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000136)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000112)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000148)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000141)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000134)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000102)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id IS NULL AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000145)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000141)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000134)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000104)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000144)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000140)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000135)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000716)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.004576)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000187)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001747)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000142)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001648)[0m   [0mDROP TABLE "sample_movies"[0m
+  [4;36;1mSQL (0.000114)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001725)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001689)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001701)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001704)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001782)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001896)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.001746)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.002096)[0m   [0;1mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.000438)[0m   [0mselect r.rated_id from ratings r where r.user_id in ( 1,2 ) and rated_id not in ( 1,2 ) and rated_type = 'SampleMovie' order by r.rated_id[0m
+  [4;36;1mRating Load (0.000732)[0m   [0;1m SELECT r.* 
+ FROM ratings r 
+ WHERE r.rated_id = 1 AND r.rated_type = 'SampleMovie' AND r.user_id IN 
+ ( SELECT ra.user_id FROM ratings ra WHERE ra.rated_id = 2 AND ra.rated_type = 'SampleMovie' )
+ ORDER BY r.user_id [0m
+  [4;35;1mRating Load (0.000674)[0m   [0mSELECT * FROM "ratings" WHERE (rated_id = 2 and rated_type = 'SampleMovie' and user_id in ( 1,2,3,4 )) ORDER BY user_id[0m
+  [4;36;1mSQL (0.000127)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type IS NULL) [0m
+  [4;35;1mRating Delete all (0.001991)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000150)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000135)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000114)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000151)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000144)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000136)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000102)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id IS NULL AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000147)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000141)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000133)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.000103)[0m   [0;1mSELECT "user_id" FROM "ratings" WHERE ("ratings".user_id = 1 AND "ratings".rated_id IS NULL AND "ratings".rated_type = 'SampleMovie') [0m
+  [4;35;1mRating Delete all (0.000145)[0m   [0mDELETE FROM "ratings" WHERE 1=1[0m
+  [4;36;1mSimilarity Delete all (0.000140)[0m   [0;1mDELETE FROM "similarities" WHERE 1=1[0m
+  [4;35;1mSampleMovie Delete all (0.000135)[0m   [0mDELETE FROM "sample_movies" WHERE 1=1[0m
+  [4;36;1mSQL (0.001676)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.018758)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000236)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.005391)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000192)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001772)[0m   [0mDROP TABLE "sample_movies"[0m
+  [4;36;1mSQL (0.000150)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001695)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.001554)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.001707)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.001616)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001690)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.023904)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.001968)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.001935)[0m   [0;1mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.000732)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.015575)[0m   [0mDROP TABLE "similarities"[0m
+  [4;36;1mSQL (0.000209)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.001921)[0m   [0mDROP TABLE "ratings"[0m
+  [4;36;1mSQL (0.000140)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.002542)[0m   [0mDROP TABLE "sample_movies"[0m
+  [4;36;1mSQL (0.000131)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.002271)[0m   [0mCREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "score" decimal(2,1), "rated_id" integer, "rated_type" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.002296)[0m   [0;1mCREATE INDEX "index_ratings_on_user_id" ON "ratings" ("user_id")[0m
+  [4;35;1mSQL (0.002395)[0m   [0mCREATE INDEX "index_ratings_on_rated_id_and_rated_type" ON "ratings" ("rated_id", "rated_type")[0m
+  [4;36;1mSQL (0.002122)[0m   [0;1mCREATE INDEX "index_ratings_on_all" ON "ratings" ("user_id", "rated_id", "rated_type")[0m
+  [4;35;1mSQL (0.001965)[0m   [0mCREATE TABLE "similarities" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "similarity_value" decimal(10,8), "mirror" boolean DEFAULT 'f', "first_item_id" integer NOT NULL, "first_item_type" varchar(255) NOT NULL, "last_item_id" integer NOT NULL, "last_item_type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.002965)[0m   [0;1mCREATE INDEX "index_similarities_on_all_items" ON "similarities" ("first_item_id", "first_item_type", "last_item_id", "last_item_type")[0m
+  [4;35;1mSQL (0.017448)[0m   [0mCREATE INDEX "index_similarities_on_first_item_id_and_first_item_type" ON "similarities" ("first_item_id", "first_item_type")[0m
+  [4;36;1mSQL (0.002227)[0m   [0;1mCREATE TABLE "sample_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "created_at" datetime, "updated_at" datetime) [0m

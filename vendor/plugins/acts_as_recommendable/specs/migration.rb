@@ -28,12 +28,18 @@ class SpecDatabaseSetup < ActiveRecord::Migration
     add_index :similarities, [:first_item_id, :first_item_type, :last_item_id, :last_item_type], :name => 'index_similarities_on_all_items'    
     add_index :similarities, [:first_item_id, :first_item_type ]
 
+    create_table :sample_movies do |t|
+      t.string :title
+      t.timestamps
+    end
+
   end
   
   def self.down
 
     drop_table :similarities if Similarity.table_exists?
     drop_table :ratings if Rating.table_exists?
+    drop_table :sample_movies if SampleMovie.table_exists?
 
   end
 end

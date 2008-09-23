@@ -2,7 +2,7 @@ class Rating < ActiveRecord::Base
 
   validates_presence_of :user_id, :rated, :score
   validates_numericality_of :score
-  validates_inclusion_of :score, :in => 0.0..5.0
+  #validates_inclusion_of :score, :in => 0.0..5.0
   validates_uniqueness_of :user_id, :scope => [ :rated_id, :rated_type ]
 
   belongs_to :user
@@ -16,7 +16,7 @@ class Rating < ActiveRecord::Base
 
   class << self
 
-    def find_common_ratings_for_users( first_user, last_user, rated_type = 'Movie' )
+    def find_common_ratings_for_users( first_user, last_user, rated_type )
       first_user_ratings = find_by_sql( [ COMMON_RATINGS_FOR_USERS_SELECT, first_user.id, rated_type, last_user.id, rated_type ] )
       last_user_ratings = find( :all, :order => 'rated_id', :conditions => ['user_id = ? and rated_type = ? and rated_id in ( ? )', last_user.id, rated_type, first_user_ratings.map(&:rated_id)] )
       return first_user_ratings, last_user_ratings

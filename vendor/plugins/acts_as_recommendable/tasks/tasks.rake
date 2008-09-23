@@ -25,4 +25,14 @@ namespace :recommendations  do
     Similarity.update_similarities_since( rated_type, since )
   end
 
+  desc 'Execute plugin specs'
+  task :specs do
+
+    files = [ 'algorithms', 'ratings', 'recommendations_service', 'similarities' ].map do |f|
+      "#{File.dirname(__FILE__)}/../specs/#{f}_spec.rb"
+    end.join( ' ' )
+
+    Kernel.system( "spec #{files}" )
+  end
+
 end

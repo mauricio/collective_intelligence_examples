@@ -1,0 +1,59 @@
+rating_1:
+  user_id: 1
+  rated_id: 1
+  rated_type: SampleMovie
+  score: 4.0
+
+rating_2:
+  user_id: 2
+  rated_id: 1
+  rated_type: SampleMovie
+  score: 3.5
+
+rating_3:
+  user_id: 3
+  rated_id: 1
+  rated_type: SampleMovie
+  score: 4.0
+
+rating_4:
+  user_id: 4
+  rated_id: 1
+  rated_type: SampleMovie
+  score: 4.5
+
+rating_5:
+  user_id: 1
+  rated_id: 2
+  rated_type: SampleMovie
+  score: 3.0
+
+rating_6:
+  user_id: 2
+  rated_id: 2
+  rated_type: SampleMovie
+  score: 5.0
+
+rating_7:
+  user_id: 3
+  rated_id: 2
+  rated_type: SampleMovie
+  score: 4.5
+
+rating_8:
+  user_id: 4
+  rated_id: 2
+  rated_type: SampleMovie
+  score: 2.5
+
+rating_9:
+  user_id: 1
+  rated_id: 3
+  rated_type: SampleMovie
+  score: 5.0
+
+rating_10:
+  user_id: 1
+  rated_id: 4
+  rated_type: SampleMovie
+  score: 1.0

@@ -2,7 +2,7 @@ class Similarity < ActiveRecord::Base
 
   belongs_to :first_item, :polymorphic  => true
   belongs_to :last_item, :polymorphic  => true
-  validates_presence_of :similarity_value
+  validates_presence_of :similarity_value, :first_item, :last_item
   validates_numericality_of :similarity_value
 
   after_create :create_mirror
